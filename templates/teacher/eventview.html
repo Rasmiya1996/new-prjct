@@ -1,0 +1,63 @@
+{% extends 'teacher/base.html' %}
+{% block content %}
+
+<h1> Table</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">EVENT NAME</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">EVENT DATE</th>
+        <th scope="col">START TIME</th>
+        <th scope="col">END TIME</th>
+
+        <th scope="col">CLUB</th>
+        <th scope="col">STAFF_INCHARGE</th>
+
+
+         <th scope="col">DELETE</th>
+        <th scope="col">UPDATE</th>
+
+
+    </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.event_name}}</td>
+         <td>{{i.description}}</td>
+         <td>{{i.event_date}}</td>
+         <td>{{i.start_time}}</td>
+         <td>{{i.end_time}}</td>
+         <td>{{i.club_1}}</td>
+         <td>{{i.club_1.staff_incharge.teacher_name }}</td>
+
+<!--         <td>{{i.club_1.staff_incharge.user_1.id}}</td>-->
+
+<!--         <td>{{request.user.id}}</td>-->
+
+
+         {% if i.club_1.staff_incharge.user_1 == request.user %}
+
+          <td>
+             <form action="{% url 'eventdelt' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">delete</button>
+             </form>
+         </td>
+         <td>
+             <a href="{% url 'event_update' i.id %}" class="btn btn-success">update</a>
+         </td>
+         {% else %}
+         <td><h6 style="color:red">Not Available</h6></td>
+
+         {% endif %}
+     </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

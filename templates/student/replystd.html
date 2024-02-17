@@ -1,0 +1,28 @@
+{% extends 'student/base.html' %}
+{% block content %}
+<h1> Reply</h1>
+<table class="table">
+    <thead class="table table-striped">
+     <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">DATE</th>
+        <th scope="col">FEEDBACK</th>
+        <th scope="col">REPLY</th>
+        </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.date}}</td>
+        <td>{{i.feedback}}</td>
+         <td>{{i.reply}}</td>
+     </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}

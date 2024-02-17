@@ -1,0 +1,20 @@
+{% extends 'admintemplate/base.html' %}
+ {% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center disply-4">Club</h1>
+        </div>
+        <div class="col-md-12">
+            <form method="POST"  action="#" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form3|crispy}}
+                <br>
+                <input type="submit" class="btn btn-dark btn-block" value="add"/>
+                 <a href="{% url 'clubview' %}" class="btn btn-success">view</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

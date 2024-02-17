@@ -1,0 +1,32 @@
+{% extends 'student/base.html' %}
+
+{% block content %}
+  <div class="row">
+    {% for i in data %}
+      <div class="col-md-6">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{ i.image.url }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-text"><b>{{ forloop.counter }}</b></p>
+                <h5 class="card-title">{{ i.club_name }}</h5>
+                <p class="card-text"><small class="text-body-secondary"><b>{{ i.staff_incharge.teacher_name }}</b></small></p>
+
+<!--                {% if i.staff_incharge.user_1 == request.user %}-->
+<!--                <a href="{% url 'club_event' i.id %}" class="btn btn-success">events</a>-->
+
+<!--                {% else %}-->
+<!--                 <h6 style="color:red">you can't create an event</h6>-->
+<!--                {% endif %}-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

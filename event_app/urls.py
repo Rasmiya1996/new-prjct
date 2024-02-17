@@ -1,0 +1,53 @@
+from django.urls import path
+
+from event_app import views
+
+urlpatterns = [
+
+   path("",views.home,name="home"),
+   path("new",views.new,name="new"),
+
+   path("teach",views.teacher_login,name="teacher_login"),
+   path("stud",views.student_login,name="student_login"),
+   path("adbase",views.ad_base,name="ad_base"),
+   path("stubase",views.stu_base,name="stu_base"),
+   path("teachbase",views.teach_base,name="teach_base"),
+   path("logview",views.login_view,name="login_view"),
+   path("stuview",views.stuview,name="stuview"),
+   path("teachview",views.teachview,name="teachview"),
+   path("studelt/<int:id>/",views.studelt,name="studelt"),
+   path("teachdelt/<int:id>/",views.teachdelt,name="teachdelt"),
+   path("stuupdate/<int:id>/", views.stuupdate, name="stuupdate"),
+   path("teachupdate/<int:id>/", views.teachupdate, name="teachupdate"),
+   path("Club",views.club,name="Club"),
+   path("clubview",views.clubview,name="clubview"),
+   path("clubdelt/<int:id>/",views.clubdelt,name="clubdelt"),
+   path("clubupdate/<int:id>/",views.clubupdate,name="clubupdate"),
+   path("viewclub",views.viewclub,name="viewclub"),
+   path("stuclub_view",views.stuclub_view,name="stuclub_view"),
+   path("club_event/<int:id>/",views.club_event,name="club_event"),
+   path("view_event",views.view_event,name="view_event"),
+   path("event_update/<int:id>/",views.event_update,name="event_update"),
+   path("eventdelt/<int:id>/",views.eventdelt,name="eventdelt"),
+   path("notification",views.notification,name="notification"),
+   path("notadm_view",views.notadm_view,name="notadm_view"),
+   path("notstu_view",views.notstu_view,name="notstu_view"),
+   path("nottea_view",views.nottea_view,name="nottea_view"),
+   path("feed_back",views.feed_back,name="feed_back"),
+   path("feedstd_view",views.feedstd_view,name="feedstd_view"),
+   path("feedadm_view",views.feedadm_view,name="feedadm_view"),
+   path("reply_feed/<int:id>/",views.reply_feed,name="reply_feed"),
+   path("Reply_View",views.Reply_View,name="Reply_View"),
+   path("Joinreq_teacher",views.Joinreq_teacher,name="Joinreq_teacher"),
+   path("joinreq_view",views.joinreq_view,name="joinreq_view"),
+   path("joinreq_update/<int:id>/",views.joinreq_update,name="joinreq_update"),
+   path("request_delt/<int:id>/",views.request_delt,name="request_delt"),
+   path("joinstd_view",views.joinstd_view,name="joinstd_view"),
+   # path("join_page/<int:id>/",views.join_page,name="join_page"),
+   path("send_req/<int:id>/",views.send_req,name="send_req"),
+   path("sendreq_view",views.sendreq_view,name="sendreq_view"),
+   path("teaapprove/<int:id>/",views.teaapprove,name="teaapprove"),
+   path("teareject/<int:id>/",views.teareject,name="teareject"),
+   path("logout_view",views.logout_view,name="logout_view"),
+
+]

@@ -1,0 +1,47 @@
+{% extends 'admintemplate/base.html' %}
+{% block content %}
+<h1> Table</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">STUDENT NAME</th>
+        <th scope="col">ADMISSION NUMBER</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">PHONE NUMBER</th>
+        <th scope="col">ADDRESS</th>
+        <th scope="col">DEPARTMENT</th>
+        <th scope="col">DELETE</th>
+        <th scope="col">UPDATE</th>
+
+
+    </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data1 %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.student_name}}</td>
+        <td>{{i.admission_number}}</td>
+         <td>{{i.email}}</td>
+         <td>{{i.phone_number}}</td>
+         <td>{{i.address}}</td>
+         <td>{{i.department}}</td>
+
+          <td>
+             <form action="{% url 'studelt' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">delete</button>
+             </form>
+         </td>
+         <td>
+             <a href="{% url 'stuupdate' i.id %}" class="btn btn-success">update</a>
+         </td>
+     </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'teacher/base.html' %}
+{% block content %}
+<h1> student req view</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+         <th scope="col">STUDENT NAME</th>
+        <th scope="col">CLUB NAME</th>
+        <th scope="col">START_DATE</th>
+        <th scope="col">END_DATE</th>
+
+
+        </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+         <td>{{i.user.user_2}}</td>
+        <td>{{i.approve.club_name}}</td>
+        <td>{{i.approve.start_date}}</td>
+         <td>{{i.approve.end_date}}</td>
+
+
+{% if i.approve.club_name.staff_incharge.user_1 == request.user %}
+ {% if i.status == 0 %}
+          <td>
+              <form action="{% url 'teaapprove' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">approve</button>
+
+              </form>
+          </td>
+         <td>
+
+
+               <form action="{% url 'teareject' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">reject</button>
+
+              </form>
+          </td>
+
+
+
+       {% elif i.status == 1 %}
+         <td>
+             <h4 style="color:green;">approved</h4>
+         </td>
+         {% else %}
+          <td>
+             <h4 style="color:red;">Rejected</h4>
+         </td>
+
+         {% endif %}
+          {% endif %}
+
+
+
+     </tr>
+     {% endfor %}
+     </tbody>
+
+
+
+</table>
+
+
+{% endblock %}

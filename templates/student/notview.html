@@ -1,0 +1,26 @@
+{% extends 'student/base.html' %}
+{% block content %}
+<h1> Notification</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">STUDENT NAME</th>
+        <th scope="col">ADMISSION NUMBER</th>
+        </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.date}}</td>
+        <td>{{i.description}}</td>
+     </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'student/base.html' %}
+{% block content %}
+<h1> join req view</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">CLUB NAME</th>
+        <th scope="col">START_DATE</th>
+        <th scope="col">END_DATE</th>
+        <th scope="col">JOIN</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.club_name}}</td>
+        <td>{{i.start_date}}</td>
+         <td>{{i.end_date}}</td>
+
+          <td>
+             <form action="{% url 'send_req' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">Join</button>
+             </form>
+         </td>
+
+
+     </tr>
+    {% endfor %}
+    {% for i in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{i.message}}
+    </div>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}

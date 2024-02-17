@@ -1,0 +1,40 @@
+{% extends 'teacher/base.html' %}
+{% block content %}
+<h1> join req view</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">CLUB NAME</th>
+        <th scope="col">START_DATE</th>
+        <th scope="col">END_DATE</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+        </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.club_name}}</td>
+        <td>{{i.start_date}}</td>
+         <td>{{i.end_date}}</td>
+
+          <td>
+             <form action="{% url 'request_delt' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">delete</button>
+             </form>
+         </td>
+
+         <td>
+             <a href="{% url 'joinreq_update' i.id %}" class="btn btn-success">update</a>
+         </td>
+     </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}
